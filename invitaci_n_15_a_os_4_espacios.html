@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación 15 Años - Fabiola Samayoa (4 Espacios)</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dusty-rose': '#D88A9C',
+                        'dusty-rose-dark': '#8B4353',
+                        'rose-gold': '#B76E79',
+                        'rose-gold-dark': '#7A3B45',
+                        'blush-pastel': '#FCE8EC',
+                        'soft-pink-card': '#FAF0F2',
+                    },
+                    fontFamily: {
+                        script: ['"Great Vibes"', 'cursive'],
+                        garamond: ['"Cormorant Garamond"', 'serif'],
+                        cinzel: ['"Cinzel"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: #FAF0F2;
+            color: #4A2E35;
+            overflow-x: hidden;
+        }
+
+        .bg-card-gradient {
+            background: linear-gradient(145deg, #FFFFFF 0%, #FCE8EC 50%, #FAF0F2 100%);
+        }
+
+        .gold-shine-text {
+            background: linear-gradient(90deg, #7A3B45 0%, #B76E79 25%, #F3C6CF 50%, #E5A9B4 75%, #7A3B45 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shine 3s linear infinite;
+        }
+
+        .envelope-flap {
+            transform-origin: top;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .envelope-open .envelope-flap {
+            transform: rotateX(180deg);
+        }
+
+        @keyframes goldSparkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.08); }
+        }
+        .gold-sparkle-ring {
+            animation: goldSparkle 2s infinite ease-in-out;
+        }
+
+        @keyframes floatSparkle {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.4; }
+            50% { transform: translateY(-8px) rotate(12deg); opacity: 1; }
+        }
+        .gold-sparkle {
+            animation: floatSparkle 2.5s infinite ease-in-out;
+        }
+
+        @keyframes bowPulse {
+            0%, 100% { filter: drop-shadow(0 0 15px rgba(244, 180, 195, 0.8)) drop-shadow(0 0 30px rgba(216, 138, 156, 0.4)); transform: scale(1); }
+            50% { filter: drop-shadow(0 0 25px rgba(255, 205, 215, 1)) drop-shadow(0 0 45px rgba(216, 138, 156, 0.7)); transform: scale(1.02); }
+        }
+        .sparkle-bow-container {
+            animation: bowPulse 3.5s ease-in-out infinite;
+        }
+
+        @keyframes shimmerSparkles {
+            0% { opacity: 0.3; transform: translateY(0px) scale(0.9); }
+            50% { opacity: 1; transform: translateY(-4px) scale(1.15); }
+            100% { opacity: 0.3; transform: translateY(0px) scale(0.9); }
+        }
+        .bow-sparkle-dot {
+            animation: shimmerSparkles 2s ease-in-out infinite;
+        }
+
+        @keyframes strandGlow {
+            0%, 100% { opacity: 0.4; stroke-dashoffset: 0; }
+            50% { opacity: 1; stroke-dashoffset: -20; }
+        }
+        .glitter-strand {
+            stroke-dasharray: 4, 8;
+            animation: strandGlow 3s linear infinite;
+        }
+
+        .animated-name {
+            background: linear-gradient(90deg, #7A3B45 0%, #B76E79 25%, #E5A9B4 50%, #B76E79 75%, #7A3B45 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; color: black !important; }
+            #envelope-screen { display: none !important; }
+            #main-content { opacity: 1 !important; transform: none !important; }
+            .print-break-inside-avoid { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-start relative">
+
+    <!-- REPRODUCTOR DE AUDIO SPOTIFY -->
+    <div id="spotify-player-container" class="sr-only opacity-0 pointer-events-none absolute left-0 top-0 w-1 h-1 overflow-hidden">
+        <iframe id="spotifyIframe" src="https://open.spotify.com/embed/track/61uyGDPJ06MkxJtHgPmuyO?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- BARRA SUPERIOR DE CONTROL -->
+    <header class="no-print fixed top-4 inset-x-4 z-50 flex justify-between items-center max-w-xl mx-auto pointer-events-none">
+        <button onclick="window.print()" class="pointer-events-auto bg-soft-pink-card text-dusty-rose-dark border border-dusty-rose/50 font-cinzel text-xs font-bold px-4 py-2.5 rounded-full shadow-lg hover:brightness-95 transition flex items-center gap-2 backdrop-blur-md">
+            <i class="fa-solid fa-file-pdf text-rose-gold-dark text-sm"></i>
+            <span>Imprimir / PDF</span>
+        </button>
+
+        <button id="musicToggleBtn" onclick="toggleMusic()" class="pointer-events-auto bg-gradient-to-r from-dusty-rose to-rose-gold text-white font-cinzel text-xs font-bold px-4 py-2.5 rounded-full shadow-lg hover:brightness-105 transition flex items-center gap-2 border border-white/60">
+            <i id="musicIcon" class="fa-solid fa-music text-sm"></i>
+            <span id="musicText">Música</span>
+        </button>
+    </header>
+
+    <!-- PANTALLA INICIAL: SOBRE DE BIENVENIDA -->
+    <div id="envelope-screen" class="no-print fixed inset-0 z-40 bg-gradient-to-b from-blush-pastel via-soft-pink-card to-white flex flex-col items-center justify-center p-4">
+        <div id="envelope" class="relative w-full max-w-lg min-h-[31rem] sm:min-h-[33rem] bg-blush-pastel rounded-3xl shadow-2xl border-2 border-dusty-rose/40 flex flex-col items-center justify-between p-7 sm:p-10 overflow-hidden">
+            <div class="absolute inset-0 pointer-events-none">
+                <span class="absolute top-4 left-6 text-yellow-500/80 text-xl gold-sparkle">✨</span>
+                <span class="absolute top-12 right-8 text-amber-400/90 text-2xl gold-sparkle" style="animation-delay: 0.5s;">⭐</span>
+                <span class="absolute bottom-6 left-8 text-yellow-600/70 text-lg gold-sparkle" style="animation-delay: 1s;">✨</span>
+                <span class="absolute bottom-10 right-6 text-amber-500/80 text-xl gold-sparkle" style="animation-delay: 1.5s;">🌟</span>
+            </div>
+
+            <div class="text-center z-10 space-y-1 mt-2">
+                <p class="font-cinzel text-xs tracking-[0.35em] text-dusty-rose-dark uppercase font-semibold">Te invitamos a celebrar</p>
+                <h1 class="font-script text-5xl sm:text-6xl text-rose-gold-dark font-bold drop-shadow-sm">Mis 15 Años</h1>
+            </div>
+
+            <div class="relative z-30 flex flex-col items-center justify-center my-auto">
+                <button onclick="openEnvelope()" class="group relative flex flex-col items-center justify-center focus:outline-none">
+                    <div class="absolute -inset-4 rounded-full bg-gradient-to-r from-yellow-400/50 via-amber-300/70 to-yellow-500/50 blur-md gold-sparkle-ring"></div>
+                    <div class="w-28 h-28 rounded-full bg-gradient-to-tr from-dusty-rose-dark via-dusty-rose to-rose-gold border-4 border-amber-200/90 shadow-2xl flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300 relative z-10">
+                        <span class="absolute -top-1 -right-1 text-yellow-300 text-lg gold-sparkle">✨</span>
+                        <span class="absolute -bottom-1 -left-1 text-yellow-300 text-lg gold-sparkle" style="animation-delay: 0.7s;">✨</span>
+                        <i class="fa-solid fa-envelope-open text-white text-3xl drop-shadow-md"></i>
+                    </div>
+
+                    <div class="mt-4 bg-soft-pink-card/95 border border-amber-300/80 px-7 py-3 rounded-full shadow-lg group-hover:bg-white transition-all duration-300 relative z-10">
+                        <p class="font-cinzel text-xs font-bold text-dusty-rose-dark tracking-widest uppercase flex items-center gap-2">
+                            <i class="fa-solid fa-sparkles text-rose-gold-dark"></i>
+                            Abrir Invitación
+                        </p>
+                    </div>
+                </button>
+            </div>
+
+            <div class="text-center z-10 w-full max-w-md rounded-2xl bg-white/80 border border-dusty-rose/40 px-6 py-4 shadow-sm space-y-1.5">
+                <h2 class="font-script text-4xl sm:text-5xl leading-tight text-dusty-rose-dark font-bold drop-shadow-xs">Fabiola Samayoa</h2>
+                <p class="font-cinzel text-xs sm:text-sm font-bold tracking-[0.2em] text-gray-800 uppercase whitespace-nowrap">5 DE DICIEMBRE 2026</p>
+                
+                <div class="pt-1.5 border-t border-dusty-rose/30 mt-1">
+                    <span class="inline-block bg-rose-gold/15 text-rose-gold-dark border border-rose-gold/40 font-cinzel text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
+                        Espacios reservados: 4
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL DE LA INVITACIÓN -->
+    <main id="main-content" class="relative z-10 w-full max-w-xl min-h-screen px-4 py-16 space-y-8 opacity-0 transition-opacity duration-1000">
+
+        <!-- PORTADA CON MOÑO SVG -->
+        <section class="text-center py-10 px-6 rounded-3xl bg-card-gradient border border-dusty-rose/40 shadow-xl relative overflow-hidden flex flex-col items-center">
+            <div class="relative mb-4 z-10">
+                <div class="absolute inset-0 -m-8 pointer-events-none opacity-60">
+                    <div class="w-full h-full bg-[radial-gradient(circle_at_center,_rgba(252,232,236,0.9)_0%,_rgba(244,211,218,0.5)_40%,_transparent_75%)] blur-xl"></div>
+                </div>
+
+                <div class="relative w-48 h-64 sm:w-56 sm:h-72 sparkle-bow-container mx-auto flex items-center justify-center">
+                    <svg viewBox="0 0 240 320" class="w-full h-full">
+                        <defs>
+                            <linearGradient id="pinkRibbonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#FFF0F3" stop-opacity="0.95"/>
+                                <stop offset="40%" stop-color="#F4D3DA" stop-opacity="0.85"/>
+                                <stop offset="80%" stop-color="#E8A5B3" stop-opacity="0.75"/>
+                                <stop offset="100%" stop-color="#D88A9C" stop-opacity="0.9"/>
+                            </linearGradient>
+
+                            <linearGradient id="glowBorderGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#FFFFFF"/>
+                                <stop offset="50%" stop-color="#FFE5EA"/>
+                                <stop offset="100%" stop-color="#FFFFFF"/>
+                            </linearGradient>
+
+                            <filter id="lightGlow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="3" result="blur" />
+                                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                            </filter>
+                        </defs>
+
+                        <g class="glitter-threads" stroke="#FFFFFF" opacity="0.85">
+                            <line x1="85" y1="150" x2="80" y2="290" stroke-width="1.2" class="glitter-strand" />
+                            <line x1="95" y1="155" x2="92" y2="305" stroke-width="1" class="glitter-strand" style="animation-delay: 0.4s;"/>
+                            <line x1="105" y1="160" x2="105" y2="315" stroke-width="1.5" class="glitter-strand" style="animation-delay: 0.8s;"/>
+                            <line x1="115" y1="160" x2="114" y2="300" stroke-width="1" class="glitter-strand" style="animation-delay: 1.2s;"/>
+                            <line x1="125" y1="160" x2="128" y2="310" stroke-width="1.4" class="glitter-strand" style="animation-delay: 0.2s;"/>
+                            <line x1="135" y1="155" x2="140" y2="295" stroke-width="1" class="glitter-strand" style="animation-delay: 0.6s;"/>
+                            <line x1="145" y1="150" x2="152" y2="285" stroke-width="1.2" class="glitter-strand" style="animation-delay: 1.0s;"/>
+
+                            <line x1="70" y1="145" x2="62" y2="270" stroke-width="1" class="glitter-strand" style="animation-delay: 0.3s;"/>
+                            <line x1="165" y1="145" x2="175" y2="265" stroke-width="1" class="glitter-strand" style="animation-delay: 0.9s;"/>
+                        </g>
+
+                        <path d="M 105 145 C 95 190, 75 240, 68 280 C 78 275, 88 270, 95 260 C 102 210, 110 170, 112 148 Z" fill="url(#pinkRibbonGrad)" stroke="url(#glowBorderGrad)" stroke-width="1.5"/>
+                        <path d="M 135 145 C 145 190, 165 240, 172 280 C 162 275, 152 270, 145 260 C 138 210, 130 170, 128 148 Z" fill="url(#pinkRibbonGrad)" stroke="url(#glowBorderGrad)" stroke-width="1.5"/>
+
+                        <path d="M 110 135 C 70 120, 20 85, 25 55 C 30 25, 80 40, 115 120 Z" fill="url(#pinkRibbonGrad)" stroke="url(#glowBorderGrad)" stroke-width="2" filter="url(#lightGlow)"/>
+                        <path d="M 108 128 C 75 105, 38 78, 42 58 C 46 38, 82 52, 112 118 Z" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.6"/>
+
+                        <path d="M 130 135 C 170 120, 220 85, 215 55 C 210 25, 160 40, 125 120 Z" fill="url(#pinkRibbonGrad)" stroke="url(#glowBorderGrad)" stroke-width="2" filter="url(#lightGlow)"/>
+                        <path d="M 132 128 C 165 105, 202 78, 198 58 C 194 38, 158 52, 128 118 Z" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.6"/>
+
+                        <rect x="108" y="120" width="24" height="28" rx="7" fill="#FFF0F3" stroke="#FFFFFF" stroke-width="2" filter="url(#lightGlow)"/>
+                        <rect x="111" y="123" width="18" height="22" rx="5" fill="url(#pinkRibbonGrad)"/>
+
+                        <g fill="#FFFFFF">
+                            <circle cx="35" cy="50" r="2.5" class="bow-sparkle-dot" />
+                            <circle cx="60" cy="40" r="2" class="bow-sparkle-dot" style="animation-delay: 0.5s;"/>
+                            <circle cx="85" cy="65" r="3" class="bow-sparkle-dot" style="animation-delay: 1.1s;"/>
+                            <circle cx="45" cy="80" r="2.2" class="bow-sparkle-dot" style="animation-delay: 0.3s;"/>
+                            
+                            <circle cx="205" cy="50" r="2.5" class="bow-sparkle-dot" style="animation-delay: 0.7s;"/>
+                            <circle cx="180" cy="40" r="2" class="bow-sparkle-dot" style="animation-delay: 1.2s;"/>
+                            <circle cx="155" cy="65" r="3" class="bow-sparkle-dot" style="animation-delay: 0.2s;"/>
+                            <circle cx="195" cy="80" r="2.2" class="bow-sparkle-dot" style="animation-delay: 0.9s;"/>
+
+                            <circle cx="80" cy="290" r="3.5" class="bow-sparkle-dot" style="animation-delay: 0.1s;"/>
+                            <circle cx="92" cy="305" r="2.5" class="bow-sparkle-dot" style="animation-delay: 0.8s;"/>
+                            <circle cx="105" cy="315" r="4" class="bow-sparkle-dot" style="animation-delay: 0.4s;"/>
+                            <circle cx="114" cy="300" r="3" class="bow-sparkle-dot" style="animation-delay: 1.3s;"/>
+                            <circle cx="128" cy="310" r="3.5" class="bow-sparkle-dot" style="animation-delay: 0.6s;"/>
+                            <circle cx="140" cy="295" r="2.5" class="bow-sparkle-dot" style="animation-delay: 1.0s;"/>
+                            <circle cx="152" cy="285" r="3" class="bow-sparkle-dot" style="animation-delay: 0.3s;"/>
+
+                            <path d="M 120 110 L 122 118 L 130 120 L 122 122 L 120 130 L 118 122 L 110 120 L 118 118 Z" class="bow-sparkle-dot" style="animation-delay: 0.5s;"/>
+                            <path d="M 50 45 L 51 50 L 56 51 L 51 52 L 50 57 L 49 52 L 44 51 L 49 50 Z" class="bow-sparkle-dot" style="animation-delay: 1.4s;"/>
+                            <path d="M 190 45 L 191 50 L 196 51 L 191 52 L 190 57 L 189 52 L 184 51 L 189 50 Z" class="bow-sparkle-dot" style="animation-delay: 0.8s;"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="space-y-3 z-10 w-full">
+                <p class="font-garamond italic text-xl sm:text-2xl text-dusty-rose-dark font-semibold leading-relaxed max-w-md mx-auto">
+                    Con la bendición de Dios y el amor de mis padres, tengo la alegría de invitarte a compartir esta noche especial
+                </p>
+                
+                <h1 class="font-garamond text-3xl sm:text-4xl text-dusty-rose-dark font-bold leading-tight pt-2">
+                    Mis Quince Años
+                </h1>
+                
+                <div id="fabiolaNameContainer" class="relative inline-block py-2">
+                    <span class="absolute -top-3 -left-6 text-amber-400 text-3xl gold-sparkle">✨</span>
+                    <span class="absolute top-0 -right-6 text-yellow-400 text-4xl gold-sparkle" style="animation-delay: 0.3s;">⭐</span>
+                    <span class="absolute -bottom-2 left-4 text-amber-300 text-2xl gold-sparkle" style="animation-delay: 0.7s;">✨</span>
+                    <span class="absolute bottom-2 right-2 text-yellow-300 text-3xl gold-sparkle" style="animation-delay: 1.1s;">🌟</span>
+                    
+                    <h2 class="font-script text-6xl sm:text-7xl text-rose-gold-dark font-bold tracking-wide drop-shadow-lg leading-none px-4 animated-name">
+                        Fabiola Samayoa
+                    </h2>
+                </div>
+                
+                <div class="py-4 border-2 border-rose-gold/80 inline-block px-8 sm:px-10 rounded-full bg-soft-pink-card shadow-md mt-4 transform hover:scale-105 transition text-center space-y-1">
+                    <p class="font-cinzel text-lg sm:text-xl font-bold tracking-widest text-rose-gold-dark leading-none">
+                        Sábado 5/Diciembre
+                    </p>
+                    <p class="font-cinzel text-lg sm:text-xl font-bold tracking-widest text-rose-gold-dark leading-none">
+                        6:00 pm
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEDICATORIA -->
+        <section class="py-8 px-6 rounded-3xl bg-white border border-dusty-rose/30 shadow-lg text-center space-y-6 print-break-inside-avoid">
+            <div class="w-12 h-0.5 bg-dusty-rose mx-auto rounded-full"></div>
+            <p class="font-garamond italic text-xl sm:text-2xl text-rose-gold-dark leading-relaxed font-semibold">
+                "Hoy llego a mis 15 años y me hace muy feliz compartir con familiares y amigos esta bendición."
+            </p>
+            <p class="font-garamond italic text-xl sm:text-2xl text-rose-gold-dark leading-relaxed font-semibold">
+                "Cada felicitación y abrazo de esta noche quedará en mi corazón como un hermoso recuerdo."
+            </p>
+            <div class="w-12 h-0.5 bg-dusty-rose mx-auto rounded-full"></div>
+        </section>
+
+        <!-- PADRES -->
+        <section class="py-8 px-6 rounded-3xl bg-card-gradient border border-dusty-rose/40 shadow-lg text-center space-y-4 print-break-inside-avoid">
+            <p class="font-cinzel text-xs tracking-[0.25em] text-dusty-rose-dark uppercase font-bold">Con el amor incondicional de mis padres</p>
+            <div class="py-2 space-y-1">
+                <h3 class="font-script text-4xl sm:text-5xl text-rose-gold-dark font-bold drop-shadow-xs">Lorena Melara</h3>
+                <p class="font-cinzel text-sm text-dusty-rose font-semibold">&</p>
+                <h3 class="font-script text-4xl sm:text-5xl text-rose-gold-dark font-bold drop-shadow-xs">Jhoan Samayoa</h3>
+            </div>
+        </section>
+
+        <!-- SECCIÓN LUGAR -->
+        <section class="py-8 px-6 rounded-3xl bg-white border border-dusty-rose/30 shadow-lg text-center space-y-5 print-break-inside-avoid">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blush-pastel text-dusty-rose-dark text-xl mb-1">
+                <i class="fa-solid fa-location-dot"></i>
+            </div>
+            
+            <h3 class="font-cinzel text-lg font-bold tracking-wider text-dusty-rose-dark uppercase">Lugar</h3>
+            
+            <div class="space-y-1">
+                <h4 class="font-garamond text-2xl font-bold text-rose-gold-dark">Sala de Recepción Alegría's Eventos</h4>
+                <p class="font-garamond text-lg text-gray-700">Calle Las Palmas #229 Colonia San Benito, San Salvador</p>
+            </div>
+
+            <div class="pt-2 no-print">
+                <a href="https://maps.google.com/?q=San+Salvador+Alegria+Eventos" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-dusty-rose to-rose-gold text-white font-cinzel text-xs font-bold px-6 py-3 rounded-full shadow-md hover:brightness-105 transition">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span>Ver Ubicación en Mapa</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- VESTIMENTA & REGALO -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 print-break-inside-avoid">
+            <section class="py-6 px-5 rounded-3xl bg-card-gradient border border-dusty-rose/40 shadow-md text-center space-y-3">
+                <div class="text-dusty-rose-dark text-2xl"><i class="fa-solid fa-vest-patches"></i></div>
+                <h4 class="font-cinzel text-sm font-bold tracking-wider text-dusty-rose-dark uppercase">Código de Vestimenta</h4>
+                <p class="font-garamond text-base text-gray-800 leading-relaxed font-semibold">
+                    Las tonalidades de rosa están reservadas para la quinceañera en su día especial.
+                </p>
+            </section>
+
+            <section class="py-6 px-5 rounded-3xl bg-card-gradient border border-dusty-rose/40 shadow-md text-center space-y-3">
+                <div class="text-dusty-rose-dark text-2xl"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <h4 class="font-cinzel text-sm font-bold tracking-wider text-dusty-rose-dark uppercase">Muestra de Cariño</h4>
+                <p class="font-garamond text-base text-gray-800 leading-relaxed font-semibold">
+                    Tu presencia es mi mejor regalo. Si deseas otorgarme un presente, sugerimos la modalidad en sobre.
+                </p>
+            </section>
+        </div>
+
+        <!-- DJ -->
+        <section class="no-print py-8 px-6 rounded-3xl bg-white border border-dusty-rose/30 shadow-lg text-center space-y-4 print-break-inside-avoid">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blush-pastel text-dusty-rose-dark text-xl">
+                <i class="fa-solid fa-compact-disc"></i>
+            </div>
+            
+            <h3 class="font-cinzel text-base font-bold tracking-wider text-dusty-rose-dark uppercase">Sugerencia Musical</h3>
+            <p class="font-garamond text-lg text-gray-700">
+                ¿Qué canción no puede faltar en la fiesta? ¡Envía tu sugerencia al DJ!
+            </p>
+            
+            <a href="https://wa.me/50377681859?text=Hola!%20Me%20gustar%C3%ADa%20sugerir%20esta%20canci%C3%B3n%20para%20los%2015%20A%C3%B1os%20de%20Fabiola:%20" target="_blank" class="inline-flex items-center gap-2 bg-soft-pink-card text-dusty-rose-dark border border-dusty-rose/50 font-cinzel text-xs font-bold px-6 py-3 rounded-full shadow-sm hover:bg-blush-pastel transition">
+                <i class="fa-brands fa-whatsapp text-green-600 text-sm"></i>
+                <span>Sugerir Canción a la Quinceañera</span>
+            </a>
+        </section>
+
+        <!-- RSVP (4 ESPACIOS) -->
+        <section class="py-8 px-6 rounded-3xl bg-gradient-to-r from-dusty-rose-dark to-rose-gold-dark text-white text-center space-y-4 shadow-xl print-break-inside-avoid">
+            <h3 class="font-cinzel text-lg font-bold tracking-widest uppercase text-blush-pastel">Confirmación de Asistencia</h3>
+            
+            <div class="inline-block bg-white/20 border border-white/40 px-5 py-1.5 rounded-full">
+                <p class="font-cinzel text-xs sm:text-sm font-bold tracking-wider text-white uppercase">
+                    Espacios reservados: 4
+                </p>
+            </div>
+
+            <p class="font-garamond text-lg text-rose-100">
+                Favor de confirmar tu asistencia antes del <span class="font-bold underline decoration-amber-300 decoration-2">25 de Noviembre</span>
+            </p>
+            
+            <div class="pt-2 no-print">
+                <a href="https://wa.me/50377681859?text=Hola,%20confirmo%20mi%20asistencia%20para%20los%2015%20A%C3%B1os%20de%20Fabiola%20Samayoa%20(Espacios%20reservados:%204)" target="_blank" class="inline-flex items-center gap-3 bg-white text-dusty-rose-dark font-cinzel text-xs font-bold px-8 py-3.5 rounded-full shadow-lg hover:bg-blush-pastel transition transform hover:scale-105">
+                    <i class="fa-brands fa-whatsapp text-green-600 text-lg"></i>
+                    <span>Confirmar vía WhatsApp (7768-1859)</span>
+                </a>
+            </div>
+            
+            <p class="hidden print:block font-cinzel text-sm font-bold text-white pt-2">
+                RSVP WhatsApp: 7768-1859
+            </p>
+        </section>
+
+        <!-- PIE DE PÁGINA -->
+        <footer class="text-center py-8 space-y-2">
+            <p class="font-cinzel text-xs tracking-widest text-gray-700 uppercase">Te espero para celebrar juntos</p>
+            <h2 class="font-script text-6xl text-rose-gold-dark font-bold drop-shadow-sm">Fabiola Samayoa</h2>
+            
+            <div class="relative inline-block pt-2">
+                <span class="absolute -top-1 -left-5 text-rose-gold text-xl gold-sparkle">✨</span>
+                <span class="absolute -bottom-1 -right-5 text-dusty-rose-dark text-xl gold-sparkle" style="animation-delay: 0.6s;">✨</span>
+                <h3 class="font-cinzel text-3xl sm:text-4xl font-extrabold tracking-[0.25em] gold-shine-text uppercase drop-shadow-md">
+                    15 Años
+                </h3>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        let isPlaying = false;
+
+        function startAudioTrack() {
+            const audio = document.getElementById('bgMusic');
+            const spotifyIframe = document.getElementById('spotifyIframe');
+            const musicIcon = document.getElementById('musicIcon');
+            const musicText = document.getElementById('musicText');
+
+            spotifyIframe.src = "https://open.spotify.com/embed/track/61uyGDPJ06MkxJtHgPmuyO?utm_source=generator&autoplay=1";
+
+            audio.play().then(() => {
+                isPlaying = true;
+                musicIcon.className = "fa-solid fa-compact-disc fa-spin text-sm";
+                if(musicText) musicText.innerText = "Pausar";
+            }).catch(() => {
+                isPlaying = true;
+                musicIcon.className = "fa-solid fa-compact-disc fa-spin text-sm";
+                if(musicText) musicText.innerText = "Pausar";
+            });
+        }
+
+        function stopAudioTrack() {
+            const audio = document.getElementById('bgMusic');
+            const spotifyIframe = document.getElementById('spotifyIframe');
+            const musicIcon = document.getElementById('musicIcon');
+            const musicText = document.getElementById('musicText');
+
+            audio.pause();
+            spotifyIframe.src = "https://open.spotify.com/embed/track/61uyGDPJ06MkxJtHgPmuyO?utm_source=generator";
+            isPlaying = false;
+            musicIcon.className = "fa-solid fa-music text-sm";
+            if(musicText) musicText.innerText = "Música";
+        }
+
+        function toggleMusic() {
+            if (isPlaying) {
+                stopAudioTrack();
+            } else {
+                startAudioTrack();
+            }
+        }
+
+        function openEnvelope() {
+            const envelope = document.getElementById('envelope');
+            const envelopeScreen = document.getElementById('envelope-screen');
+            const mainContent = document.getElementById('main-content');
+            const fabiolaName = document.getElementById('fabiolaNameContainer');
+
+            envelope.classList.add('envelope-open');
+            startAudioTrack();
+
+            setTimeout(() => {
+                envelopeScreen.classList.add('opacity-0');
+                setTimeout(() => {
+                    envelopeScreen.style.display = 'none';
+                    mainContent.classList.remove('opacity-0');
+                    if (fabiolaName) {
+                        fabiolaName.classList.remove('animated-name');
+                        void fabiolaName.offsetWidth;
+                        fabiolaName.classList.add('animated-name');
+                    }
+                }, 700);
+            }, 800);
+        }
+    </script>
+</body>
+</html>
